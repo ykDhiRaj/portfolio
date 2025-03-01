@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { GlowingEffect } from "./glowing-effect";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 export function GlowingEffectDemo() {
   return (

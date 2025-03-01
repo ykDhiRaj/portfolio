@@ -37,17 +37,17 @@ function App() {
   ];
 
   // Function to handle smooth scrolling when navbar items are clicked
-  const handleScroll = (ref) => {
+  const handleScroll = (ref:any) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     
     // Get form and result elements
     const form = e.target;
     const resultDiv = document.getElementById("result");
-    const resultText = resultDiv.querySelector("p");
+    const resultText = resultDiv?.querySelector("p");
     
     // Show loading state
     form.querySelector("button").disabled = true;
@@ -74,39 +74,46 @@ function App() {
       if (res.success) {
         // Success
         console.log("Success", res);
-        resultDiv.classList.remove("hidden", "bg-red-100");
-        resultDiv.classList.add("bg-green-100");
-        resultText.classList.add("text-green-700");
-        resultText.innerText = "Message sent successfully! I'll get back to you soon.";
+        resultDiv?.classList.remove("hidden", "bg-red-100");
+        resultDiv?.classList.add("bg-green-100");
+        resultText?.classList.add("text-green-700");
+        if (resultText) {
+          resultText.innerText = "Message sent successfully! I'll get back to you soon.";
+        }
         
         // Reset form
         form.reset();
       } else {
         // Error
         console.log("Error", res);
-        resultDiv.classList.remove("hidden", "bg-green-100");
-        resultDiv.classList.add("bg-red-100");
-        resultText.classList.add("text-red-700");
-        resultText.innerText = "Something went wrong. Please try again later.";
+        resultDiv?.classList.remove("hidden", "bg-green-100");
+        resultDiv?.classList.add("bg-red-100");
+        resultText?.classList.add("text-red-700");
+        if (resultText) {
+            resultText.innerText = "Something went wrong. Please try again later.";
+        }
+        
       }
     } catch (error) {
       // Network or other error
       console.error("Error:", error);
-      resultDiv.classList.remove("hidden", "bg-green-100");
-      resultDiv.classList.add("bg-red-100");
-      resultText.classList.add("text-red-700");
-      resultText.innerText = "Something went wrong. Please try again later.";
+      resultDiv?.classList.remove("hidden", "bg-green-100");
+      resultDiv?.classList.add("bg-red-100");
+      resultText?.classList.add("text-red-700");
+      if(resultText){
+        resultText.innerText = "Something went wrong. Please try again later.";
+      }
     } finally {
       // Reset button state
       form.querySelector("button").disabled = false;
       form.querySelector("button span").innerText = "Send Message";
       
       // Scroll to result message
-      resultDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+      resultDiv?.scrollIntoView({ behavior: "smooth", block: "center" });
       
       // Hide message after 5 seconds
       setTimeout(() => {
-        resultDiv.classList.add("hidden");
+        resultDiv?.classList.add("hidden");
       }, 5000);
     }
   };
