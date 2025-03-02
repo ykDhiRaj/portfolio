@@ -207,7 +207,7 @@ function App() {
                   </div>
                   <div className="flex flex-col items-center text-white">
                     <SiRedux className="text-3xl sm:text-4xl lg:text-5xl" />
-                    <p className="mt-2 text-sm sm:text-base lg:text-lg">Redux Toolkit</p>
+                    <p className="mt-2 text-sm sm:text-base lg:text-lg">Redux</p>
                   </div>
                   <div className="flex flex-col items-center text-white">
                     <FaDocker className="text-3xl sm:text-4xl lg:text-5xl" />
